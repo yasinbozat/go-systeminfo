@@ -2,6 +2,7 @@ package main
 
 import (
 	"os/exec"
+	"strings"
 )
 
 var usableNouns = []string{
@@ -42,5 +43,8 @@ func SystemInfo(Noun string) (result string, UsableNouns []string) {
 	UsableNouns = usableNouns
 	c := exec.Command("wmic", "bios", "get", Noun)
 	a, _ := c.Output()
-	return string(a), UsableNouns
+	b := string(a)
+	res := strings.Split(strings.Replace(b, " ", "", 1), "\n")
+	res1 := strings.TrimSpace(res[1])
+	return res1, UsableNouns
 }

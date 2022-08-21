@@ -1,2 +1,2 @@
 # go-systeminfo
-System info on windows with golang.
+System info on windows with go.
